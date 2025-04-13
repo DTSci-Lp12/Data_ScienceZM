@@ -69,7 +69,7 @@ def load_data(file):
 # Safeguard: File upload function with validation
 def app():
     st.title("Yengo | Lusaka Stock Exchange (LUSE) Portfolio Management")
-    st.markdown("About the Author: Limbani Phiri ...")
+    st.markdown("About the Author: Limbani Phiri ...About the Author: Limbani Phiri brings a wealth of experience from his extensive career across the banking, insurance, and commerce industries. As the CEO of Yengo, he has played a pivotal role in the development and creation of the Yengo platform. His leadership and expertise have been instrumental in shaping the platform’s vision, ensuring its impact and success in the market.")
     st.markdown(f"🕒 **{datetime.now().strftime('%A, %d %B %Y | %I:%M %p')}**")
 
     uploaded_file = st.file_uploader("📁 Upload your LUSE Stock Data CSV file", type=["csv"])
