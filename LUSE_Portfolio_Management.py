@@ -168,6 +168,32 @@ def app():
                 st.markdown("### 💼 Portfolio Prediction Summary")
                 st.write(f"**Expected Final Portfolio Value**: K`{final_value:.2f}`")
                 st.write(f"**Change in Value**: K`{change:.2f}`")
+                from PIL import Image
+
+                # Optional: Load a logo or use a placeholder if not available
+                try:
+                    logo_image = Image.open("logo.png")  # Make sure this exists in the working directory
+                except:
+                    logo_image = Image.new("RGB", (100, 50), color="white")
+                
+                # --- Generate PDF buffer ---
+                pdf_buffer = export_pdf_summary(
+                    temp=temp,
+                    forecast=forecast,
+                    closing_prices=simulated_prices,
+                    selected_company=selected_company,
+                    logo_image=logo_image
+                )
+                
+                # --- Download Button ---
+                if pdf_buffer:
+                    st.download_button(
+                        label="📄 Download PDF Report",
+                        data=pdf_buffer,
+                        file_name=f"{selected_company}_LUSE_Report.pdf",
+                        mime="application/pdf"
+                    )
+
 
             except Exception as e:
                 logging.error(f"Simulation error: {e}")
