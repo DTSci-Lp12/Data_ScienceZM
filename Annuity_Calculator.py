@@ -48,106 +48,106 @@ border_image.putalpha(border_mask)
 
 
 # ---------- Custom Styling ----------
-st.markdown("""
-    <style>
-    /* Label styling (input labels, checkbox labels, etc.) */
-    label, .css-1offfwp, .stCheckbox, .stTextInput > label, .stSelectbox > label, .stDateInput > label {
-        color: #000000 !important;
-        font-weight: 600;
-        font-size: 15px;
-    }
+# st.markdown("""
+#     <style>
+#     /* Label styling (input labels, checkbox labels, etc.) */
+#     label, .css-1offfwp, .stCheckbox, .stTextInput > label, .stSelectbox > label, .stDateInput > label {
+#         color: #000000 !important;
+#         font-weight: 600;
+#         font-size: 15px;
+#     }
 
-    /* Metric cards */
-    div[data-testid="metric-container"] {
-        background-color: #1e1e1e;
-        padding: 15px;
-        border-radius: 10px;
-        border: 1px solid #FF4C4C;
-    }
+#     /* Metric cards */
+#     div[data-testid="metric-container"] {
+#         background-color: #1e1e1e;
+#         padding: 15px;
+#         border-radius: 10px;
+#         border: 1px solid #FF4C4C;
+#     }
 
-    div[data-testid="metric-container"] > div {
-        color: #FFFFFF !important;
-        font-size: 1.5em;
-        font-weight: bold;
-        text-align: center;
-    }
+#     div[data-testid="metric-container"] > div {
+#         color: #FFFFFF !important;
+#         font-size: 1.5em;
+#         font-weight: bold;
+#         text-align: center;
+#     }
 
-    /* Inputs */
-    .stTextInput input, .stDateInput input {
-        background-color: #121212;
-        color: white;
-        border: 1px solid #FF4C4C;
-        border-radius: 5px;
-        padding: 6px;
-    }
+#     /* Inputs */
+#     .stTextInput input, .stDateInput input {
+#         background-color: #121212;
+#         color: white;
+#         border: 1px solid #FF4C4C;
+#         border-radius: 5px;
+#         padding: 6px;
+#     }
 
-    /* File uploader label */
-    .css-1cpxqw2 {
-        color: #FFFFFF !important;
-        font-weight: 600;
-    }
+#     /* File uploader label */
+#     .css-1cpxqw2 {
+#         color: #FFFFFF !important;
+#         font-weight: 600;
+#     }
 
-    /* Divider lines */
-    hr, .red-line {
-        border: none;
-        height: 2px;
-        background-color: #FF4C4C;
-        margin: 25px 0;
-    }
+#     /* Divider lines */
+#     hr, .red-line {
+#         border: none;
+#         height: 2px;
+#         background-color: #FF4C4C;
+#         margin: 25px 0;
+#     }
 
-    /* Section spacing */
-    .stMarkdown h2 {
-        margin-top: 2em;
-    }
+#     /* Section spacing */
+#     .stMarkdown h2 {
+#         margin-top: 2em;
+#     }
 
-    body, .main, .stApp {
-        background-color: black;
-        color: white;
-    }
-    .stButton button {
-    background-color: transparent !important;
-    color: white !important;
-    border: 1px solid white !important;
-    padding: 10px 24px;
-    font-size: 16px;
-    border-radius: 5px;
-    transition: 0.3s ease;
-}
-    .stButton button:hover {
-        background-color: red !important;
-        color: white !important;
-        border: 1px solid red !important;
-    }
-    .insights, .header {
-        background-color: #1e1e1e;
-        padding: 20px;
-        border-radius: 10px;
-        margin-bottom: 20px;
-        color: #FF4C4C;
-        text-align: center;
-        font-weight: bold;
-        font-size: 28px;
-        text-shadow: 1px 1px 2px #000;
-    }
-    .input-label {
-        font-weight: bold;
-        color: #f5f5f5;
-    }
-    .date-stamp {
-        color: #CCCCCC;
-        font-style: italic;
-    }
-    /* Bright White Color for Titles and Headers */
-    .title, h1, h2, h3 , h4 {
-        color: #FFFFFF !important;
-        text-shadow: 2px 2px 5px #000000;
-    }
-    .title,h5 {
-        color: #FF0000 !important;
-        text-shadow: 2px 2px 5px #000000;
-    }
-    </style>
-""", unsafe_allow_html=True)
+#     body, .main, .stApp {
+#         background-color: black;
+#         color: white;
+#     }
+#     .stButton button {
+#     background-color: transparent !important;
+#     color: white !important;
+#     border: 1px solid white !important;
+#     padding: 10px 24px;
+#     font-size: 16px;
+#     border-radius: 5px;
+#     transition: 0.3s ease;
+# }
+#     .stButton button:hover {
+#         background-color: red !important;
+#         color: white !important;
+#         border: 1px solid red !important;
+#     }
+#     .insights, .header {
+#         background-color: #1e1e1e;
+#         padding: 20px;
+#         border-radius: 10px;
+#         margin-bottom: 20px;
+#         color: #FF4C4C;
+#         text-align: center;
+#         font-weight: bold;
+#         font-size: 28px;
+#         text-shadow: 1px 1px 2px #000;
+#     }
+#     .input-label {
+#         font-weight: bold;
+#         color: #f5f5f5;
+#     }
+#     .date-stamp {
+#         color: #CCCCCC;
+#         font-style: italic;
+#     }
+#     /* Bright White Color for Titles and Headers */
+#     .title, h1, h2, h3 , h4 {
+#         color: #FFFFFF !important;
+#         text-shadow: 2px 2px 5px #000000;
+#     }
+#     .title,h5 {
+#         color: #FF0000 !important;
+#         text-shadow: 2px 2px 5px #000000;
+#     }
+#     </style>
+# """, unsafe_allow_html=True)
 # ---------- Annuity Calculation ----------
 def calculate_annuity_value(start_date, end_date, annual_contribution, nominal_rate):
     num_days = (end_date - start_date).days
