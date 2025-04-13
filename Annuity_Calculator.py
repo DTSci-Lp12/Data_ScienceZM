@@ -39,6 +39,29 @@ border_draw.ellipse(
 )
 border_image.paste(image, (border_size, border_size), image)
 border_image.putalpha(border_mask)
+st.markdown("""
+    <style>
+    /* Styling */
+    body, .main, .stApp {
+        background-color: black;
+        color: white;
+    }
+    .stButton button {
+        background-color: transparent !important;
+        color: white !important;
+        border: 1px solid white !important;
+        padding: 10px 24px;
+        font-size: 16px;
+        border-radius: 5px;
+        transition: 0.3s ease;
+    }
+    .stButton button:hover {
+        background-color: red !important;
+        color: white !important;
+        border: 1px solid red !important;
+    }
+    </style>
+""", unsafe_allow_html=True)
 
 # ---------- Annuity Calculation ----------
 def calculate_annuity_value(start_date, end_date, annual_contribution, nominal_rate):
