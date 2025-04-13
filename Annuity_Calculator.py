@@ -150,69 +150,59 @@ border_image.putalpha(border_mask)
 # """, unsafe_allow_html=True)
 st.markdown("""
     <style>
-    /* Make main area black and text white */
+    /* Main app background and text */
     .stApp {
-        background-color: black !important;
+        background-color: #000000;
+        color: white;
     }
 
-    .block-container {
-        color: white !important;
-    }
-
-    /* Sidebar: light background with black text */
+    /* Sidebar background and text */
     section[data-testid="stSidebar"] {
-        background-color: white !important;
-        color: black !important;
+        background-color: white;
+        color: black;
     }
 
-    /* Sidebar label styling */
     section[data-testid="stSidebar"] label,
     section[data-testid="stSidebar"] .stTextInput,
     section[data-testid="stSidebar"] .stNumberInput,
     section[data-testid="stSidebar"] .stDateInput,
     section[data-testid="stSidebar"] .stSelectbox {
-        color: black !important;
+        color: black;
     }
 
-    /* Fix Streamlit select box text inside sidebar */
-    section[data-testid="stSidebar"] .css-1cpxqw2 {
-        color: black !important;
-    }
-
-    /* General input styling for main content */
+    /* Inputs in main app */
     .stTextInput input,
     .stNumberInput input,
     .stDateInput input {
-        background-color: #121212;
+        background-color: #1e1e1e;
         color: white;
         border: 1px solid #FF4C4C;
         border-radius: 5px;
     }
 
-    /* Button styling */
+    /* Buttons */
     .stButton button {
-        background-color: transparent !important;
-        color: white !important;
-        border: 1px solid white !important;
+        background-color: transparent;
+        color: white;
+        border: 1px solid white;
         padding: 10px 24px;
         font-size: 16px;
         border-radius: 5px;
-        transition: 0.3s ease;
     }
 
     .stButton button:hover {
-        background-color: red !important;
-        color: white !important;
-        border: 1px solid red !important;
+        background-color: red;
+        color: white;
+        border: 1px solid red;
     }
 
-    /* Title and headings */
-    .title, h1, h2, h3, h4 {
-        color: #FFFFFF !important;
-        text-shadow: 2px 2px 5px #000000;
+    /* Titles and Headers */
+    h1, h2, h3, h4, h5 {
+        color: #ffffff;
+        text-shadow: 1px 1px 2px #000000;
     }
 
-    /* Divider line */
+    /* Red divider line */
     hr.red-line {
         height: 2px;
         border: none;
@@ -221,6 +211,7 @@ st.markdown("""
     }
     </style>
 """, unsafe_allow_html=True)
+
 
 # ---------- Annuity Calculation ----------
 def calculate_annuity_value(start_date, end_date, annual_contribution, nominal_rate):
