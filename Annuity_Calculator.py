@@ -57,7 +57,7 @@ st.markdown("""
         color: white;
     }
     .stButton button {
-        background-color: transparent !important;
+        background-color: black !important;
         color: white !important;
         border: 1px solid white !important;
         padding: 10px 24px;
@@ -217,7 +217,7 @@ def app():
         colA, colB = st.columns(2)
         with colA:
             st.markdown(f"""
-                <div style="color: white;">
+                <div style="color: black;">
                     <h5>Contribution Days</h5>
                     <div style="{box_style}">
                         <h3>{num_days}</h3>
@@ -227,7 +227,7 @@ def app():
 
         with colB:
             st.markdown(f"""
-                <div style="color: white;">
+                <div style="color: black;">
                     <h5>Daily Contribution</h5>
                     <div style="{box_style}">
                         <h3>ZMW {daily_payment:.2f}</h3>
@@ -238,7 +238,7 @@ def app():
         colC, colD = st.columns(2)
         with colC:
             st.markdown(f"""
-                <div style="color: white;">
+                <div style="color: black;">
                     <h5>Future Value</h5>
                     <div style="{box_style}">
                         <h3>ZMW {future_value:,.2f}</h3>
@@ -248,7 +248,7 @@ def app():
 
         with colD:
             st.markdown(f"""
-                <div style="color: white;">
+                <div style="color: black;">
                     <h5>Present Value</h5>
                     <div style="{box_style}">
                         <h3>ZMW {present_value:,.2f}</h3>
@@ -259,7 +259,7 @@ def app():
         colE, colF = st.columns(2)
         with colE:
             st.markdown(f"""
-                <div style="color: white;">
+                <div style="color: black;">
                     <h5>Interest Earned</h5>
                     <div style="{box_style}">
                         <h3>ZMW {total_gain:,.2f}</h3>
@@ -268,7 +268,7 @@ def app():
             """, unsafe_allow_html=True)
         with colF:
             st.markdown(f"""
-                <div style="color: white;">
+                <div style="color: black;">
                     <h5>Effective Annual Return</h5>
                     <div style="{box_style}">
                         <h3>{effective_return * 100:.2f}%</h3>
@@ -295,7 +295,7 @@ def app():
 
             st.subheader("📂 Downloads")
             st.markdown("""
-                <div style="color: white;">
+                <div style="color: black;">
                     You can download a detailed report of your annuity calculations in your preferred format below.
                 </div><br> 
             """, unsafe_allow_html=True)
@@ -305,7 +305,7 @@ def app():
         st.markdown("""
             <style>
             div[data-baseweb="select"] > div {
-                background-color: transparent ;
+                background-color: black ;
                 color: white ;
                 border: 1px solid white;
                 border-radius: 8px;
@@ -318,7 +318,7 @@ def app():
         """, unsafe_allow_html=True)
 
         # White-colored label
-        st.markdown("<span style='color:white; font-weight:600;'>Choose report format:</span>", unsafe_allow_html=True)
+        st.markdown("<span style='color:black; font-weight:600;'>Choose report format:</span>", unsafe_allow_html=True)
 
         # Selectbox without internal label
         format_choice = st.selectbox(
