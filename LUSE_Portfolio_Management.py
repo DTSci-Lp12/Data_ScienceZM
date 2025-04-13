@@ -236,16 +236,19 @@ def export_pdf_summary(temp, forecast, closing_prices, selected_company, logo_im
         pdf.add_page()
         pdf.set_auto_page_break(auto=True, margin=15)
 
+        # Save logo to a temporary file
         with tempfile.NamedTemporaryFile(delete=False, suffix=".png") as tmp:
             logo_image.save(tmp.name, format="PNG")
             logo_path = tmp.name
 
+        # Add logo to PDF
         pdf.set_font("Arial", 'B', 14)
         pdf.image(logo_path, x=10, y=8, w=30)
         pdf.cell(0, 10, f"Report Number: {np.random.randint(1000, 9999)}", align='R', ln=1)
         pdf.cell(0, 10, datetime.now().strftime('%A, %d %B %Y | %I:%M %p'), align='C', ln=1)
         pdf.ln(5)
 
+        # Title and company info
         pdf.set_font("Arial", 'B', 18)
         pdf.set_text_color(220, 50, 50)
         pdf.cell(0, 15, "Lusaka Stock Exchange Portfolio Prediction", ln=1, align='C')
@@ -272,18 +275,21 @@ def export_pdf_summary(temp, forecast, closing_prices, selected_company, logo_im
             pdf.cell(60, 10, value, 1)
             pdf.cell(50, 10, analysis, 1, 1)
 
+        # Footer
         pdf.set_y(-30)
         pdf.set_font("Arial", 'B', 10)
         pdf.cell(0, 10, "DISCLAIMER: This is a simulation and does not guarantee future performance.", 0, 1, 'C')
 
-        buffer = BytesIO()
-        pdf.output(buffer)
-        buffer.seek(0)
+        # Write PDF to BytesIO using 'S' mode
+        pdf_output = pdf.output(dest='S').encode('latin1')
+        buffer = BytesIO(pdf_output)
         return buffer
 
     except Exception as e:
         logging.error(f"PDF export failed: {e}")
         st.error("Failed to generate PDF summary.")
+        return None
+
 
 # --- Main Execution ---
 if __name__ == "__main__":
