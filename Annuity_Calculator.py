@@ -39,56 +39,6 @@ border_draw.ellipse(
 )
 border_image.paste(image, (border_size, border_size), image)
 border_image.putalpha(border_mask)
-st.markdown("""
-    <style>
-    /* Styling */
-    body, .main, .stApp {
-        background-color: black;
-        color: white;
-    }
-    .stButton button {
-        background-color: transparent !important;
-        color: white !important;
-        border: 1px solid white !important;
-        padding: 10px 24px;
-        font-size: 16px;
-        border-radius: 5px;
-        transition: 0.3s ease;
-    }
-    .stButton button:hover {
-        background-color: red !important;
-        color: white !important;
-        border: 1px solid red !important;
-    }
-    .grid-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 16px;
-        margin-top: 20px;
-    }
-
-    .grid-item {
-        padding: 16px;
-        border: 2px solid rgba(255, 255, 255, 0.3);  /* transparent white border */
-        border-radius: 10px;
-        text-align: center;
-    }
-
-    .label {
-        color: white;
-        font-size: 16px;
-        margin-bottom: 6px;
-        display: block;
-    }
-
-    .value {
-        color: red;
-        font-size: 20px;
-        font-weight: bold;
-    }
-    </style>
-""", unsafe_allow_html=True)
-
 # ---------- Annuity Calculation ----------
 def calculate_annuity_value(start_date, end_date, annual_contribution, nominal_rate):
     num_days = (end_date - start_date).days
@@ -176,6 +126,55 @@ def generate_pdf(data, investor_name, border_image):
 
 # ---------- Streamlit App ----------
 def app():
+    st.markdown("""
+    <style>
+    /* Styling */
+    body, .main, .stApp {
+        background-color: black;
+        color: white;
+    }
+    .stButton button {
+        background-color: transparent !important;
+        color: white !important;
+        border: 1px solid white !important;
+        padding: 10px 24px;
+        font-size: 16px;
+        border-radius: 5px;
+        transition: 0.3s ease;
+    }
+    .stButton button:hover {
+        background-color: red !important;
+        color: white !important;
+        border: 1px solid red !important;
+    }
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 16px;
+        margin-top: 20px;
+    }
+
+    .grid-item {
+        padding: 16px;
+        border: 2px solid rgba(255, 255, 255, 0.3);  /* transparent white border */
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    .label {
+        color: white;
+        font-size: 16px;
+        margin-bottom: 6px;
+        display: block;
+    }
+
+    .value {
+        color: red;
+        font-size: 20px;
+        font-weight: bold;
+    }
+    </style>
+""", unsafe_allow_html=True)
     st.sidebar.header("Investor Inputs")
     investor_name = st.sidebar.text_input("Investor Name", value="John Doe")
     annual_contribution = st.sidebar.number_input("Annual Contribution (ZMW)", min_value=0.0, value=12000.0, step=100.0)
