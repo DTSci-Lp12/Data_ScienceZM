@@ -60,6 +60,32 @@ st.markdown("""
         color: white !important;
         border: 1px solid red !important;
     }
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 16px;
+        margin-top: 20px;
+    }
+
+    .grid-item {
+        padding: 16px;
+        border: 2px solid rgba(255, 255, 255, 0.3);  /* transparent white border */
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    .label {
+        color: white;
+        font-size: 16px;
+        margin-bottom: 6px;
+        display: block;
+    }
+
+    .value {
+        color: red;
+        font-size: 20px;
+        font-weight: bold;
+    }
     </style>
 """, unsafe_allow_html=True)
 
@@ -167,12 +193,34 @@ def app():
         )
 
         st.subheader("Results Summary")
-        st.write(f"Contribution Days: {num_days}")
-        st.write(f"Daily Contribution: ZMW {daily_payment:.2f}")
-        st.write(f"Future Value: ZMW {future_value:,.2f}")
-        st.write(f"Present Value: ZMW {present_value:,.2f}")
-        st.write(f"Interest Earned: ZMW {total_gain:,.2f}")
-        st.write(f"Effective Annual Return: {effective_return * 100:.2f}%")
+        st.markdown(f"""
+        <div class="grid-container">
+            <div class="grid-item">
+                <span class="label">Contribution Days</span>
+                <span class="value">{num_days}</span>
+            </div>
+            <div class="grid-item">
+                <span class="label">Daily Contribution</span>
+                <span class="value">ZMW {daily_payment:.2f}</span>
+            </div>
+            <div class="grid-item">
+                <span class="label">Future Value</span>
+                <span class="value">ZMW {future_value:,.2f}</span>
+            </div>
+            <div class="grid-item">
+                <span class="label">Present Value</span>
+                <span class="value">ZMW {present_value:,.2f}</span>
+            </div>
+            <div class="grid-item">
+                <span class="label">Interest Earned</span>
+                <span class="value">ZMW {total_gain:,.2f}</span>
+            </div>
+            <div class="grid-item">
+                <span class="label">Effective Annual Return</span>
+                <span class="value">{effective_return * 100:.2f}%</span>
+            </div>
+        </div>
+""", unsafe_allow_html=True)
 
         results_data = {
             "Investor Name": investor_name,
