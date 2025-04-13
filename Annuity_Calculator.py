@@ -48,103 +48,27 @@ border_image.putalpha(border_mask)
 
 
 # ---------- Custom Styling ----------
+# Dark mode & custom styling
 st.markdown("""
     <style>
-    /* Label styling (input labels, checkbox labels, etc.) */
-    label, .css-1offfwp, .stCheckbox, .stTextInput > label, .stSelectbox > label, .stDateInput > label {
-        color: #000000 ;
-        font-weight: 600;
-        font-size: 15px;
-    }
-
-    /* Metric cards */
-    div[data-testid="metric-container"] {
-        background-color: #1e1e1e;
-        padding: 15px;
-        border-radius: 10px;
-        border: 1px solid #FF4C4C;
-    }
-
-    div[data-testid="metric-container"] > div {
-        color: #FFFFFF ;
-        font-size: 1.5em;
-        font-weight: bold;
-        text-align: center;
-    }
-
-    /* Inputs */
-    .stTextInput input, .stDateInput input {
-        background-color: #121212;
-        color: white;
-        border: 1px solid #FF4C4C;
-        border-radius: 5px;
-        padding: 6px;
-    }
-
-    /* File uploader label */
-    .css-1cpxqw2 {
-        color: #FFFFFF ;
-        font-weight: 600;
-    }
-
-    /* Divider lines */
-    hr, .red-line {
-        border: none;
-        height: 2px;
-        background-color: #FF4C4C;
-        margin: 25px 0;
-    }
-
-    /* Section spacing */
-    .stMarkdown h2 {
-        margin-top: 2em;
-    }
-
+    /* Styling */
     body, .main, .stApp {
         background-color: black;
         color: white;
     }
     .stButton button {
-    background-color: transparent ;
-    color: white ;
-    border: 1px solid white ;
-    padding: 10px 24px;
-    font-size: 16px;
-    border-radius: 5px;
-    transition: 0.3s ease;
-}
+        background-color: transparent !important;
+        color: white !important;
+        border: 1px solid white !important;
+        padding: 10px 24px;
+        font-size: 16px;
+        border-radius: 5px;
+        transition: 0.3s ease;
+    }
     .stButton button:hover {
-        background-color: red ;
-        color: white ;
-        border: 1px solid red ;
-    }
-    .insights, .header {
-        background-color: #1e1e1e;
-        padding: 20px;
-        border-radius: 10px;
-        margin-bottom: 20px;
-        color: #FF4C4C;
-        text-align: center;
-        font-weight: bold;
-        font-size: 28px;
-        text-shadow: 1px 1px 2px #000;
-    }
-    .input-label {
-        font-weight: bold;
-        color: #f5f5f5;
-    }
-    .date-stamp {
-        color: #CCCCCC;
-        font-style: italic;
-    }
-    /* Bright White Color for Titles and Headers */
-    .title, h1, h2, h3 , h4 {
-        color: #FFFFFF ;
-        text-shadow: 2px 2px 5px #000000;
-    }
-    .title,h5 {
-        color: #FF0000 ;
-        text-shadow: 2px 2px 5px #000000;
+        background-color: red !important;
+        color: white !important;
+        border: 1px solid red !important;
     }
     </style>
 """, unsafe_allow_html=True)
