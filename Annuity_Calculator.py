@@ -49,7 +49,6 @@ border_image.putalpha(border_mask)
 
 # ---------- Custom Styling ----------
 st.markdown("""
-   st.markdown("""
     <style>
     /* Label styling (input labels, checkbox labels, etc.) */
     label, .css-1offfwp, .stCheckbox, .stTextInput > label, .stSelectbox > label, .stDateInput > label {
