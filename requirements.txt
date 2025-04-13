@@ -1,0 +1,16 @@
+streamlit
+feedparser
+pytz
+Pillow
+requests
+pandas
+beautifulsoup4
+fpdf
+numpy
+matplotlib
+seaborn
+scipy
+statsmodels
+openpyxl
+plotly
+xlsxwriter
