@@ -220,7 +220,7 @@ def app():
                 <span class="value">{effective_return * 100:.2f}%</span>
             </div>
         </div>
-""", unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
 
         results_data = {
             "Investor Name": investor_name,
