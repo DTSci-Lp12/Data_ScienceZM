@@ -15,20 +15,10 @@ import plotly.graph_objects as go
 import plotly.figure_factory as ff
 # Dark mode & custom styling
 st.markdown("""
-   <style>  
-    /* Set background and base text color for main areas */
-    body, .main, .stApp {
-       background-color: #000000 !important;
-       color: #FFFFFF !important;
-    }
-
-    /* Generic text color for various Streamlit elements */
-    * {
-        color: #FFFFFF !important;
-    }
-
-    /* Input label styling */
-    label, .stCheckbox, .stTextInput > label, .stSelectbox > label, .stDateInput > label {
+   st.markdown("""
+    <style>
+    /* Label styling (input labels, checkbox labels, etc.) */
+    label, .css-1offfwp, .stCheckbox, .stTextInput > label, .stSelectbox > label, .stDateInput > label {
         color: #FFFFFF !important;
         font-weight: 600;
         font-size: 15px;
@@ -50,12 +40,12 @@ st.markdown("""
     }
 
     /* Inputs */
-    .stTextInput input, .stDateInput input, .stSelectbox select {
-        background-color: #121212 !important;
-        color: white !important;
-        border: 1px solid #FF4C4C !important;
-        border-radius: 5px !important;
-        padding: 6px !important;
+    .stTextInput input, .stDateInput input {
+        background-color: #121212;
+        color: white;
+        border: 1px solid #FF4C4C;
+        border-radius: 5px;
+        padding: 6px;
     }
 
     /* File uploader label */
@@ -77,23 +67,24 @@ st.markdown("""
         margin-top: 2em;
     }
 
-    /* Button styling */
-    .stButton button {
-        background-color: transparent !important;
-        color: white !important;
-        border: 1px solid white !important;
-        padding: 10px 24px;
-        font-size: 16px;
-        border-radius: 5px;
-        transition: 0.3s ease;
+    body, .main, .stApp {
+        background-color: black;
+        color: white;
     }
+    .stButton button {
+    background-color: transparent !important;
+    color: white !important;
+    border: 1px solid white !important;
+    padding: 10px 24px;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: 0.3s ease;
+}
     .stButton button:hover {
         background-color: red !important;
         color: white !important;
         border: 1px solid red !important;
     }
-
-    /* Custom containers */
     .insights, .header {
         background-color: #1e1e1e;
         padding: 20px;
@@ -105,25 +96,22 @@ st.markdown("""
         font-size: 28px;
         text-shadow: 1px 1px 2px #000;
     }
-
     .input-label {
         font-weight: bold;
         color: #f5f5f5;
     }
-
     .date-stamp {
         color: #CCCCCC;
         font-style: italic;
     }
-
-    /* Title and header styling */
-    .title, h1, h2, h3, h4, h5, h6 {
+    /* Bright White Color for Titles and Headers */
+    .title, h1, h2, h3 , h4 {
         color: #FFFFFF !important;
         text-shadow: 2px 2px 5px #000000;
     }
-
-    h5, .title-red {
+    .title,h5 {
         color: #FF0000 !important;
+        text-shadow: 2px 2px 5px #000000;
     }
     </style>
 """, unsafe_allow_html=True)
