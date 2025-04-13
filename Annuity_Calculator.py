@@ -52,7 +52,7 @@ st.markdown("""
     <style>
     /* Label styling (input labels, checkbox labels, etc.) */
     label, .css-1offfwp, .stCheckbox, .stTextInput > label, .stSelectbox > label, .stDateInput > label {
-        color: #FFFFFF !important;
+        color: #000000 !important;
         font-weight: 600;
         font-size: 15px;
     }
