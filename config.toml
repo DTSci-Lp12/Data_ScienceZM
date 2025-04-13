@@ -1,0 +1,19 @@
+[theme]
+primaryColor = "#FF4C4C"
+backgroundColor = "#000000"
+secondaryBackgroundColor = "#1e1e1e"
+textColor = "#FFFFFF"
+font = "sans serif"
+
+[server]
+headless = true
+port = 8501
+enableCORS = false
+enableXsrfProtection = false
+
+[client]
+showErrorDetails = true
+toolbarMode = "auto"
+
+[general]
+email = "Limbani_p12@icloud.com"
