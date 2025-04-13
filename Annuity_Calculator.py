@@ -148,6 +148,80 @@ border_image.putalpha(border_mask)
 #     }
 #     </style>
 # """, unsafe_allow_html=True)
+st.markdown("""
+    <style>
+    /* Make main area black and text white */
+    .stApp {
+        background-color: black !important;
+    }
+
+    .block-container {
+        color: white !important;
+    }
+
+    /* Sidebar: light background with black text */
+    section[data-testid="stSidebar"] {
+        background-color: white !important;
+        color: black !important;
+    }
+
+    /* Sidebar label styling */
+    section[data-testid="stSidebar"] label,
+    section[data-testid="stSidebar"] .stTextInput,
+    section[data-testid="stSidebar"] .stNumberInput,
+    section[data-testid="stSidebar"] .stDateInput,
+    section[data-testid="stSidebar"] .stSelectbox {
+        color: black !important;
+    }
+
+    /* Fix Streamlit select box text inside sidebar */
+    section[data-testid="stSidebar"] .css-1cpxqw2 {
+        color: black !important;
+    }
+
+    /* General input styling for main content */
+    .stTextInput input,
+    .stNumberInput input,
+    .stDateInput input {
+        background-color: #121212;
+        color: white;
+        border: 1px solid #FF4C4C;
+        border-radius: 5px;
+    }
+
+    /* Button styling */
+    .stButton button {
+        background-color: transparent !important;
+        color: white !important;
+        border: 1px solid white !important;
+        padding: 10px 24px;
+        font-size: 16px;
+        border-radius: 5px;
+        transition: 0.3s ease;
+    }
+
+    .stButton button:hover {
+        background-color: red !important;
+        color: white !important;
+        border: 1px solid red !important;
+    }
+
+    /* Title and headings */
+    .title, h1, h2, h3, h4 {
+        color: #FFFFFF !important;
+        text-shadow: 2px 2px 5px #000000;
+    }
+
+    /* Divider line */
+    hr.red-line {
+        height: 2px;
+        border: none;
+        background-color: #FF4C4C;
+        margin: 25px 0;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 # ---------- Annuity Calculation ----------
 def calculate_annuity_value(start_date, end_date, annual_contribution, nominal_rate):
     num_days = (end_date - start_date).days
