@@ -49,25 +49,37 @@ border_image.putalpha(border_mask)
 
 # ---------- Custom Styling ----------
 st.markdown("""
-        <style>
+    <style>
+    /* General background and font color */
     body, .main, .stApp {
-        background-color: black;
-        color: white;
+        background-color: black !important;
+        color: white !important;
     }
+
+    /* Make sure all text defaults to white unless overridden */
+    html, body, p, div, span, label, input, textarea {
+        color: white !important;
+        background-color: black !important;
+    }
+
+    /* Button styling */
     .stButton button {
-    background-color: transparent !important;
-    color: white !important;
-    border: 1px solid white !important;
-    padding: 10px 24px;
-    font-size: 16px;
-    border-radius: 5px;
-    transition: 0.3s ease;
-}
+        background-color: transparent !important;
+        color: white !important;
+        border: 1px solid white !important;
+        padding: 10px 24px;
+        font-size: 16px;
+        border-radius: 5px;
+        transition: 0.3s ease;
+    }
+
     .stButton button:hover {
         background-color: red !important;
         color: white !important;
         border: 1px solid red !important;
     }
+
+    /* Sections like headers and insights */
     .insights, .header {
         background-color: #1e1e1e;
         padding: 20px;
@@ -79,26 +91,35 @@ st.markdown("""
         font-size: 28px;
         text-shadow: 1px 1px 2px #000;
     }
+
+    /* Label styling */
     .input-label {
         font-weight: bold;
-        color: #f5f5f5;
+        color: #f5f5f5 !important;
     }
+
     .date-stamp {
-        color: #CCCCCC;
+        color: #CCCCCC !important;
         font-style: italic;
     }
-    /* Bright White Color for Titles and Headers */
-    .title, h1, h2, h3 , h4 {
+
+    /* Headers and Titles */
+    h1, h2, h3, h4 {
         color: #FFFFFF !important;
         text-shadow: 2px 2px 5px #000000;
     }
-    .title,h5 {
+
+    h5 {
         color: #FF0000 !important;
         text-shadow: 2px 2px 5px #000000;
     }
-    </style>
-    """, unsafe_allow_html=True)
 
+    .title {
+        color: #FFFFFF !important;
+        text-shadow: 2px 2px 5px #000000;
+    }
+    </style>
+""", unsafe_allow_html=True)
 # ---------- Annuity Calculation ----------
 def calculate_annuity_value(start_date, end_date, annual_contribution, nominal_rate):
     num_days = (end_date - start_date).days
