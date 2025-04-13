@@ -23,7 +23,7 @@ current_year = now.year
 # --- Page Config ---
 st.set_page_config(
     page_title="Yengo | Zambia Market & Economic Insights",
-    page_icon="Downloads/Multipage_App/favicon_io",  # You can replace with an emoji or a link to a favicon image
+    page_icon="favicon-16x16.png",  # You can replace with an emoji or a link to a favicon image
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -39,7 +39,7 @@ st.markdown("""
         background-repeat: no-repeat;
         background-attachment: fixed;
         position: relative;
-        height: 100vh;
+        height: 60vh;
     }
     .main::after {
         content: '';
