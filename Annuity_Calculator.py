@@ -49,37 +49,76 @@ border_image.putalpha(border_mask)
 
 # ---------- Custom Styling ----------
 st.markdown("""
+   st.markdown("""
     <style>
-    /* General background and font color */
-    body, .main, .stApp {
-        background-color: black !important;
-        color: white !important;
+    /* Label styling (input labels, checkbox labels, etc.) */
+    label, .css-1offfwp, .stCheckbox, .stTextInput > label, .stSelectbox > label, .stDateInput > label {
+        color: #FFFFFF !important;
+        font-weight: 600;
+        font-size: 15px;
     }
 
-    /* Make sure all text defaults to white unless overridden */
-    html, body, p, div, span, label, input, textarea {
-        color: white !important;
-        background-color: black !important;
+    /* Metric cards */
+    div[data-testid="metric-container"] {
+        background-color: #1e1e1e;
+        padding: 15px;
+        border-radius: 10px;
+        border: 1px solid #FF4C4C;
     }
 
-    /* Button styling */
-    .stButton button {
-        background-color: transparent !important;
-        color: white !important;
-        border: 1px solid white !important;
-        padding: 10px 24px;
-        font-size: 16px;
+    div[data-testid="metric-container"] > div {
+        color: #FFFFFF !important;
+        font-size: 1.5em;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    /* Inputs */
+    .stTextInput input, .stDateInput input {
+        background-color: #121212;
+        color: white;
+        border: 1px solid #FF4C4C;
         border-radius: 5px;
-        transition: 0.3s ease;
+        padding: 6px;
     }
 
+    /* File uploader label */
+    .css-1cpxqw2 {
+        color: #FFFFFF !important;
+        font-weight: 600;
+    }
+
+    /* Divider lines */
+    hr, .red-line {
+        border: none;
+        height: 2px;
+        background-color: #FF4C4C;
+        margin: 25px 0;
+    }
+
+    /* Section spacing */
+    .stMarkdown h2 {
+        margin-top: 2em;
+    }
+
+    body, .main, .stApp {
+        background-color: black;
+        color: white;
+    }
+    .stButton button {
+    background-color: transparent !important;
+    color: white !important;
+    border: 1px solid white !important;
+    padding: 10px 24px;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: 0.3s ease;
+}
     .stButton button:hover {
         background-color: red !important;
         color: white !important;
         border: 1px solid red !important;
     }
-
-    /* Sections like headers and insights */
     .insights, .header {
         background-color: #1e1e1e;
         padding: 20px;
@@ -91,31 +130,21 @@ st.markdown("""
         font-size: 28px;
         text-shadow: 1px 1px 2px #000;
     }
-
-    /* Label styling */
     .input-label {
         font-weight: bold;
-        color: #f5f5f5 !important;
+        color: #f5f5f5;
     }
-
     .date-stamp {
-        color: #CCCCCC !important;
+        color: #CCCCCC;
         font-style: italic;
     }
-
-    /* Headers and Titles */
-    h1, h2, h3, h4 {
+    /* Bright White Color for Titles and Headers */
+    .title, h1, h2, h3 , h4 {
         color: #FFFFFF !important;
         text-shadow: 2px 2px 5px #000000;
     }
-
-    h5 {
+    .title,h5 {
         color: #FF0000 !important;
-        text-shadow: 2px 2px 5px #000000;
-    }
-
-    .title {
-        color: #FFFFFF !important;
         text-shadow: 2px 2px 5px #000000;
     }
     </style>
