@@ -40,7 +40,18 @@ def load_data(file):
         logging.error(f"Error loading data: {e}")
         st.error("There was an error processing the file. Please try again.")
         return None
-
+# --- Generate a downloadable CSV template ---
+def generate_template():
+    template_df = pd.DataFrame({
+        "COMPANY": ["ZAMBEEF", "ZANACO", "CEC"],
+        "2021-01-01": [1.5, 2.1, 3.0],
+        "2021-01-02": [1.6, 2.0, 3.1],
+        "2021-01-03": [1.55, 2.05, 3.05]
+    })
+    buffer = BytesIO()
+    template_df.to_csv(buffer, index=False)
+    buffer.seek(0)
+    return buffer
 # --- Streamlit App ---
 def app():
     st.markdown("""
@@ -72,7 +83,22 @@ def app():
         About the Author: Limbani Phiri brings a wealth of experience from his extensive career across the banking, insurance, and commerce industries. As the CEO of Yengo, he has played a pivotal role in the development and creation of the Yengo platform.
     """)
     st.markdown(f"🕒 **{datetime.now().strftime('%A, %d %B %Y | %I:%M %p')}**")
-
+    # --- Download Template Section ---
+    st.markdown("### 📥 Download CSV Template")
+    st.markdown("""
+        To get started, download the CSV template below.  
+        Fill it in with your own historical data, ensuring:
+        - The first column is `COMPANY`
+        - Subsequent columns are dates (format: YYYY-MM-DD)
+        - Each row represents stock prices for a single company
+    """)
+    template_csv = generate_template()
+    st.download_button(
+        label="📄 Download Template CSV",
+        data=template_csv,
+        file_name="LUSE_template.csv",
+        mime="text/csv"
+    )
     uploaded_file = st.file_uploader("📁 Upload your LUSE Stock Data CSV file", type=["csv"])
 
     if uploaded_file:
