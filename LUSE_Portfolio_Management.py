@@ -15,7 +15,6 @@ import plotly.graph_objects as go
 import plotly.figure_factory as ff
 # Dark mode & custom styling
 st.markdown("""
-   st.markdown("""
     <style>
     /* Label styling (input labels, checkbox labels, etc.) */
     label, .css-1offfwp, .stCheckbox, .stTextInput > label, .stSelectbox > label, .stDateInput > label {
