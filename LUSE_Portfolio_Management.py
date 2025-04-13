@@ -211,13 +211,20 @@ def app():
                 )
                 
                 # --- Download Button ---
-                if pdf_buffer:
+                # --- Download Button ---
+                st.markdown("<hr class='red-line' />", unsafe_allow_html=True)
+                
+                if 'pdf_buffer' in locals() and pdf_buffer:
+                    st.markdown("### 📤 Download Your Forecast Report")
+                    st.info("Click the button below to download your personalized LUSE stock forecast summary as a PDF.")
+                    
                     st.download_button(
                         label="📄 Download PDF Report",
                         data=pdf_buffer,
                         file_name=f"{selected_company}_LUSE_Report.pdf",
                         mime="application/pdf"
                     )
+
 
 
             except Exception as e:
@@ -279,6 +286,7 @@ def export_pdf_summary(temp, forecast, closing_prices, selected_company, logo_im
         pdf.set_y(-30)
         pdf.set_font("Arial", 'B', 10)
         pdf.cell(0, 10, "DISCLAIMER: This is a simulation and does not guarantee future performance.", 0, 1, 'C')
+        pdf.cell(0, 10, "© 2025 Yengo. All rights reserved.", 0, 1, 'C')
 
         # Write PDF to BytesIO using 'S' mode
         pdf_output = pdf.output(dest='S').encode('latin1')
