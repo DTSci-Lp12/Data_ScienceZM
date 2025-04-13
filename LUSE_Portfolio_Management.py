@@ -169,13 +169,38 @@ def app():
                 st.write(f"**Expected Final Portfolio Value**: K`{final_value:.2f}`")
                 st.write(f"**Change in Value**: K`{change:.2f}`")
                 from PIL import Image
-
-                # Optional: Load a logo or use a placeholder if not available
-                try:
-                    logo_image = Image.open("logo.png")  # Make sure this exists in the working directory
-                except:
-                    logo_image = Image.new("RGB", (100, 50), color="white")
+                # --- Load and process logo ---
+                logo_path = "Yengo_1.jpg"
+                image = Image.open(logo_path).convert("L").convert("RGBA")
+                min_side = min(image.size)
+                image = image.crop((
+                    (image.width - min_side) // 2,
+                    (image.height - min_side) // 2,
+                    (image.width + min_side) // 2,
+                    (image.height + min_side) // 2
+                ))
                 
+                mask = Image.new('L', image.size, 0)
+                draw = ImageDraw.Draw(mask)
+                draw.ellipse((0, 0, image.size[0], image.size[1]), fill=255)
+                image.putalpha(mask)
+                
+                border_size = 8
+                border_image = Image.new(
+                    'RGBA',
+                    (image.size[0] + border_size*2, image.size[1] + border_size*2),
+                    (255, 255, 255, 0)
+                )
+                border_mask = Image.new('L', border_image.size, 0)
+                border_draw = ImageDraw.Draw(border_mask)
+                border_draw.ellipse(
+                    (0, 0, border_image.size[0], border_image.size[1]),
+                    fill=255
+                )
+                border_image.paste(image, (border_size, border_size), image)
+                border_image.putalpha(border_mask)
+                # Use the processed circular logo image
+                logo_image = border_image  
                 # --- Generate PDF buffer ---
                 pdf_buffer = export_pdf_summary(
                     temp=temp,
