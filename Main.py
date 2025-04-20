@@ -115,6 +115,33 @@ st.markdown("""
         from { opacity: 0; }
         to { opacity: 1; }
     }
+    /* Override Streamlit header style */
+    header[data-testid="stHeader"] {{
+        background-color: red !important;
+    }}
+
+    /* Custom logo bar styling */
+    .custom-logo-bar {{
+        width: 100%;
+        background-color: red;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 0;
+        z-index: 1000;
+        position: fixed;
+        top: 0;
+        left: 0;
+    }}
+
+    .custom-logo-bar img {{
+        height: 50px;
+    }}
+
+    /* Offset the main content to prevent it hiding behind fixed header */
+    .block-container {{
+        padding-top: 80px !important;
+    }}
 
 </style>
 """, unsafe_allow_html=True)
