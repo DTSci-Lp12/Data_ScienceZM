@@ -22,7 +22,7 @@ current_year = now.year
 
 # --- Page Config ---
 st.set_page_config(
-    page_title = "Yengo | Financial Analysis & Tools"
+    page_title = "Yengo | Financial Analysis & Tools",
     page_icon="favicon-16x16.png",  # You can replace with an emoji or a link to a favicon image
     layout="wide",
     initial_sidebar_state="expanded"
