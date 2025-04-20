@@ -28,99 +28,55 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# --- Custom CSS Styling ---
-st.markdown("""
+# --- Load Logo & Process ---
+logo_path = "Yengo_1.jpg"
+image = Image.open(logo_path).convert("L").convert("RGBA")
+min_side = min(image.size)
+image = image.crop(((image.width - min_side) // 2, (image.height - min_side) // 2, 
+                    (image.width + min_side) // 2, (image.height + min_side) // 2))
+
+mask = Image.new('L', image.size, 0)
+ImageDraw.Draw(mask).ellipse((0, 0, image.size[0], image.size[1]), fill=255)
+image.putalpha(mask)
+
+border_size = 10
+border_image = Image.new('RGBA', (image.size[0] + border_size * 2, image.size[1] + border_size * 2), (255, 255, 255, 0))
+border_mask = Image.new('L', border_image.size, 0)
+ImageDraw.Draw(border_mask).ellipse((0, 0, border_image.size[0], border_image.size[1]), fill=255)
+border_image.paste(image, (border_size, border_size), image)
+border_image.putalpha(border_mask)
+
+buffered = BytesIO()
+border_image.save(buffered, format="PNG")
+border_image_b64 = base64.b64encode(buffered.getvalue()).decode("utf-8")
+
+# --- CSS & Header ---
+st.markdown(f"""
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <style>
-    .main {
+    body {{
+        font-family: 'Playfair Display', serif;
+    }}
+    .main {{
         background-image: url('https://static.vecteezy.com/system/resources/thumbnails/051/264/341/small_2x/black-and-white-of-a-lion-in-the-grass-photo.jpg');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
         background-attachment: fixed;
         position: relative;
-        height: 60vh;
-    }
-    .main::after {
+        padding: 60px 20px;
+        border-radius: 12px;
+        z-index: 1;
+    }}
+    .main::after {{
         content: '';
         position: absolute;
         top: 0; left: 0;
         width: 100%; height: 100%;
-        background-color: rgba(0, 0, 0, 0.999);
+        background-color: rgba(0, 0, 0, 0.85);
         z-index: -1;
-    }
-    .footer {
-        text-align: center;
-        padding: 20px;
-        font-size: 14px;
-        background-color: rgba(38, 50, 56, 0.9);
-        color: white;
-        border-top: 5px solid #FF5722;
-        margin-top: 50px;
-    }
-    .disclaimer {
-        max-width: 900px;
-        margin: 20px auto;
-        padding: 15px;
-        background-color: rgba(255, 255, 255, 0.85);
-        color: #333333;
-        font-size: 13px;
-        border-radius: 8px;
-    }
-    hr.red-line {
-        border: none;
-        height: 2px;
-        background-color: #FF4C4C;
-        margin: 30px 0;
-    }
-    .header-text {
-        text-align: center;
-        font-size: 26px;
-        color: #FF5722;
-        font-weight: 600;
-        margin-bottom: 20px;
-    }
-    .date-region {
-        text-align: center;
-        font-size: 16px;
-        background-color: #333;
-        color: white;
-        padding: 12px;
-        border-radius: 10px;
-    }
-
-    .rss-feed {
-        font-size: 14px;
-        color: #333333;
-        background-color: #f5f5f5;
-        padding: 12px;
-        border-radius: 8px;
-        margin: 10px auto 10px auto;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        text-align: left;
-        border-left: 5px solid #FF5722;
-        animation: fadeIn 1s ease-in;
-    }
-
-    .rss-feed a {
-        color: #FF5722;
-        text-decoration: none;
-    }
-
-    .rss-feed a:hover {
-        text-decoration: underline;
-    }
-
-    @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-    }
-    /* Override Streamlit header style */
-    header[data-testid="stHeader"] {{
-        background-color: red !important;
+        border-radius: 12px;
     }}
-
-    /* Custom logo bar styling */
     .custom-logo-bar {{
         width: 100%;
         background-color: red;
@@ -128,23 +84,69 @@ st.markdown("""
         justify-content: center;
         align-items: center;
         padding: 10px 0;
-        z-index: 1000;
+        z-index: 999;
         position: fixed;
         top: 0;
         left: 0;
     }}
-
     .custom-logo-bar img {{
         height: 50px;
     }}
-
-    /* Offset the main content to prevent it hiding behind fixed header */
     .block-container {{
-        padding-top: 80px !important;
+        padding-top: 90px !important;
     }}
-
+    .header-text {{
+        text-align: center;
+        font-size: 30px;
+        color: #FF5722;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }}
+    .date-region {{
+        text-align: center;
+        font-size: 16px;
+        background-color: #222;
+        color: white;
+        padding: 12px;
+        border-radius: 10px;
+    }}
+    .rss-feed {{
+        font-size: 14px;
+        color: #333;
+        background-color: #f5f5f5;
+        padding: 12px;
+        border-radius: 8px;
+        margin: 10px auto;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-left: 5px solid #FF5722;
+        animation: fadeIn 1s ease-in;
+    }}
+    hr.red-line {{
+        border: none;
+        height: 2px;
+        background-color: #FF4C4C;
+        margin: 30px 0;
+    }}
+    .footer {{
+        text-align: center;
+        padding: 20px;
+        font-size: 14px;
+        background-color: rgba(38, 50, 56, 0.9);
+        color: white;
+        border-top: 5px solid #FF5722;
+        margin-top: 50px;
+    }}
 </style>
+<div class="custom-logo-bar">
+    <img src="data:image/png;base64,{border_image_b64}" alt="Yengo Logo">
+</div>
 """, unsafe_allow_html=True)
+
+# --- MAIN SECTION START ---
+st.markdown("<div class='main'>", unsafe_allow_html=True)
+
+# Header
+st.markdown("<div class='header-text'>Yengo | Financial Analysis & Tools</div>", unsafe_allow_html=True)
 
 # --- Sidebar Logo ---
 logo_path = "Yengo_1.jpg"
