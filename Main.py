@@ -382,10 +382,6 @@ if feed.entries:
         """, unsafe_allow_html=True)
 else:
     st.info("No news available at the moment. Please check back later.")
-    
-
-# --- Header ---
-st.markdown("<div class='header-text'> Yengo | Financial Analysis & Tools</div>", unsafe_allow_html=True)
 
 # --- Date/Time/Region ---
 st.markdown(f"""
