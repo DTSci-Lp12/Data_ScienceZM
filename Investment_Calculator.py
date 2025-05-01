@@ -437,7 +437,7 @@ To begin, please enter your investor details in the fields provided on the sideb
                 )
                 st.subheader("Bond Investment Results")
                 st.write(f"Bond Price Face Value: K{round(bond_price, 2)}")
-                st.write(f"Total Cost (After Fee): K{round(bond_cost_post_fee, 2)}")
+                st.write(f"Total Cost ( No Discount): K{round(bond_cost_post_fee, 2)}")
                 st.write(f"Semi-annual Coupon (After Tax): K{round(bond_coupon_after_tax, 2)}")
                 st.write(f"Total Return on Bond: K{round(investment + (bond_coupon_after_tax * term * 2), 2)}")
 
