@@ -152,8 +152,6 @@ def app():
                 )
                 
                 st.plotly_chart(fig, use_container_width=True)
-
-
                 # --- ARIMA Forecast ---
                 # --- Dynamic Forecast Description ---
                 st.markdown(f"### 🔮 300-Day ARIMA Forecast for `{selected_company}`")
