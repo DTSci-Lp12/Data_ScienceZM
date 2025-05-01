@@ -86,7 +86,7 @@ def create_template():
 # Streamlit app UI
 def app():
     st.title("Yengo | Actuarial Loss Reserving Framework")
-    st.subheader("Loss Reserving Through an Actuarial Lens")
+    st.subheader("Loss Reserving Through an Actuarial Lens : ")
     # Styling
     st.markdown("""
     <style>
@@ -311,7 +311,7 @@ def app():
     st.markdown("<hr class='red-line'>", unsafe_allow_html=True)
     st.markdown("""
         <div style='padding: 10px; background-color: transparent !important; border-left: 5px solid #4A90E2; border-radius: 5px;'>
-            <h4 style='margin: 0; color: white;'>🧮 Calculation Results The results and outputs for the selected method will be displayed below.</h4>
+            <h4 style='margin: 0; color: white;'>🧮 Calculation Results : The results and outputs for the selected method will be displayed below.</h4>
         </div>
         """, unsafe_allow_html=True)
 
