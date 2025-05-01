@@ -60,7 +60,7 @@ def export_to_excel(investment_data, coupon_dates, payments):
             "Coupon Rate (%)": investment_data["Coupon Rate (%)"],
             "Yield Rate (%)": investment_data["Yield Rate (%)"],
             "Bond Price Face Value (K)": investment_data["Bond Price Face Value (K)"],
-            "Total Cost (Post Fee) (K)": investment_data["Total Cost (Post Fee) (K)"],
+            "Total Cost (No Discount) (K)": investment_data["Total Cost (No Discount) (K)"],
             "Coupon (After Tax) (K)": investment_data["Coupon (After Tax) (K)"],
             "Total Return on Bond (K)": investment_data["Total Return on Bond (K)"]
         }])
@@ -70,7 +70,7 @@ def export_to_excel(investment_data, coupon_dates, payments):
             "Term (Days)": investment_data["Term (Days)"],
             "Target Yield (%)": investment_data["Target Yield (%)"],
             "Price per Unit (K)": investment_data["Price per Unit (K)"],
-            "Total Cost (Post Fee) (K)": investment_data["Total Cost (Post Fee) (K)"],
+            "Total Cost (No Discount) (K)": investment_data["Total Cost (No Discount) (K)"],
             "Interest (K)": investment_data["Interest (K)"]
         }])
 
@@ -389,7 +389,7 @@ To begin, please enter your investor details in the fields provided on the sideb
                     "Term (Days)": term,
                     "Target Yield (%)": yield_rate,
                     "Price per Unit (K)": round(price, 2),
-                    "Total Cost (Post Fee) (K)": round(cost_value_post_fee, 2),
+                    "Total Cost (No Discount) (K)": round(cost_value_post_fee, 2),
                     "Interest (K)": round(interest, 2)
                 }
                 st.markdown("<span style='color:white; font-weight:600;'>Choose report format:</span>", unsafe_allow_html=True)
@@ -447,7 +447,7 @@ To begin, please enter your investor details in the fields provided on the sideb
                     "Coupon Rate (%)": coupon_rate,
                     "Yield Rate (%)": yield_rate,
                     "Bond Price Face Value (K)": round(bond_price, 2),
-                    "Total Cost (Post Fee) (K)": round(bond_cost_post_fee, 2),
+                    "Total Cost (No Discount) (K)": round(bond_cost_post_fee, 2),
                     "Coupon (After Tax) (K)": round(bond_coupon_after_tax, 2),
                     "Total Return on Bond (K)": round(investment + (bond_coupon_after_tax * term * 2), 2),
                     "Coupon Dates": coupon_dates,
