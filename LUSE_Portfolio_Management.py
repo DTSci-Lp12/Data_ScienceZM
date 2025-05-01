@@ -155,12 +155,40 @@ def app():
 
 
                 # --- ARIMA Forecast ---
+                # --- Dynamic Forecast Description ---
+                st.markdown(f"### 🔮 300-Day ARIMA Forecast for `{selected_company}`")
+                st.markdown(f"This chart displays a 300-day forecast of **{selected_company}**’s stock price using an ARIMA(5,1,0) model based on historical data.")
+                
+                # --- Fit ARIMA Model and Generate Forecast ---
                 model = ARIMA(temp[selected_company], order=(5, 1, 0))
                 fit = model.fit()
                 forecast = fit.forecast(steps=300)
+                
+                # --- Create Forecast Plot with Enhanced Styling ---
                 fig2 = go.Figure()
-                fig2.add_trace(go.Scatter(x=list(range(len(forecast))), y=forecast, mode='lines', name='Forecast', line=dict(color='limegreen', width=3)))
-                st.plotly_chart(fig2)
+                fig2.add_trace(go.Scatter(
+                    x=list(range(len(forecast))),
+                    y=forecast,
+                    mode='lines',
+                    name='Forecast',
+                    line=dict(color='red', width=3, shape='spline'),  # Smooth curve
+                    hovertemplate='Day: %{x}<br>Forecasted Price: %{y:.2f}<extra></extra>'
+                ))
+                
+                fig2.update_layout(
+                    title=f"{selected_company} - 300-Day Forecast (ARIMA)",
+                    title_font=dict(size=22, color='red'),
+                    xaxis_title="Day Index (Future)",
+                    yaxis_title="Forecasted Price (ZMW)",
+                    paper_bgcolor='black',
+                    plot_bgcolor='black',
+                    font=dict(color='red'),
+                    xaxis=dict(showgrid=True, tickfont=dict(color='red')),
+                    yaxis=dict(showgrid=True, tickfont=dict(color='red'))
+                )
+                
+                st.plotly_chart(fig2, use_container_width=True)
+
 
             except Exception as e:
                 logging.error(f"Error in forecast or plot: {e}")
@@ -235,7 +263,6 @@ def app():
                     logo_image=logo_image
                 )
                 
-                # --- Download Button ---
                 # --- Download Button ---
                 st.markdown("<hr class='red-line' />", unsafe_allow_html=True)
                 
