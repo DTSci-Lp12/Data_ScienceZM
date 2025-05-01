@@ -59,7 +59,7 @@ def export_to_excel(investment_data, coupon_dates, payments):
             "Term (Years)": investment_data["Term (Years)"],
             "Coupon Rate (%)": investment_data["Coupon Rate (%)"],
             "Yield Rate (%)": investment_data["Yield Rate (%)"],
-            "Bond Price per Unit (K)": investment_data["Bond Price per Unit (K)"],
+            "Bond Price Face Value (K)": investment_data["Bond Price Face Value (K)"],
             "Total Cost (Post Fee) (K)": investment_data["Total Cost (Post Fee) (K)"],
             "Coupon (After Tax) (K)": investment_data["Coupon (After Tax) (K)"],
             "Total Return on Bond (K)": investment_data["Total Return on Bond (K)"]
@@ -436,7 +436,7 @@ To begin, please enter your investor details in the fields provided on the sideb
                     investment, term, coupon_rate, yield_rate / 100, purchase_date
                 )
                 st.subheader("Bond Investment Results")
-                st.write(f"Bond Price per unit: K{round(bond_price, 2)}")
+                st.write(f"Bond Price Face Value: K{round(bond_price, 2)}")
                 st.write(f"Total Cost (After Fee): K{round(bond_cost_post_fee, 2)}")
                 st.write(f"Semi-annual Coupon (After Tax): K{round(bond_coupon_after_tax, 2)}")
                 st.write(f"Total Return on Bond: K{round(investment + (bond_coupon_after_tax * term * 2), 2)}")
@@ -446,7 +446,7 @@ To begin, please enter your investor details in the fields provided on the sideb
                     "Term (Years)": term,
                     "Coupon Rate (%)": coupon_rate,
                     "Yield Rate (%)": yield_rate,
-                    "Bond Price per Unit (K)": round(bond_price, 2),
+                    "Bond Price Face Value (K)": round(bond_price, 2),
                     "Total Cost (Post Fee) (K)": round(bond_cost_post_fee, 2),
                     "Coupon (After Tax) (K)": round(bond_coupon_after_tax, 2),
                     "Total Return on Bond (K)": round(investment + (bond_coupon_after_tax * term * 2), 2),
