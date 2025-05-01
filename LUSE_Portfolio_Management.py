@@ -123,11 +123,36 @@ def app():
             st.markdown(f"## 📊 Analysis for: `{selected_company}`")
 
             try:
-                # --- Plot closing prices ---
+                # --- Dynamic Chart Description ---
+                st.markdown(f"### 📊 Price History for `{selected_company}`")
+                st.markdown(f"This chart shows the historical closing prices for **{selected_company}** based on your uploaded data.")
+                
+                # --- Create Smooth Line Chart with Enhanced Styling ---
                 fig = go.Figure()
-                fig.add_trace(go.Scatter(x=temp.index, y=temp[selected_company], mode='lines', name='Closing Price', line=dict(color='red', width=3)))
-                fig.update_layout(title=f"{selected_company} - Time Series", title_font=dict(size=22, color='white'))
-                st.plotly_chart(fig)
+                
+                fig.add_trace(go.Scatter(
+                    x=temp.index,
+                    y=temp[selected_company],
+                    mode='lines',
+                    name='Closing Price',
+                    line=dict(color='red', width=3, shape='spline'),  # Smooth curve
+                    hovertemplate='Date: %{x}<br>Price: %{y:.2f}<extra></extra>'
+                ))
+                
+                fig.update_layout(
+                    title=f"{selected_company} Stock Price Over Time",
+                    title_font=dict(size=22, color='red'),
+                    xaxis_title="Date",
+                    yaxis_title="Closing Price (ZMW)",
+                    paper_bgcolor='black',
+                    plot_bgcolor='black',
+                    font=dict(color='red'),
+                    xaxis=dict(showgrid=True, tickfont=dict(color='red')),
+                    yaxis=dict(showgrid=True, tickfont=dict(color='red'))
+                )
+                
+                st.plotly_chart(fig, use_container_width=True)
+
 
                 # --- ARIMA Forecast ---
                 model = ARIMA(temp[selected_company], order=(5, 1, 0))
