@@ -207,9 +207,27 @@ def app():
                     path = initial_price + np.cumsum(returns)
                     simulated_prices.append(path[-1])
 
-                fig3 = ff.create_distplot([simulated_prices], group_labels=[f"{selected_company} Simulation"], show_hist=False, colors=['orange'])
-                fig3.update_layout(title=f"{selected_company} - Simulated Distribution", title_font=dict(size=22, color='white'))
-                st.plotly_chart(fig3)
+                # --- Dynamic Simulation Description ---
+                st.markdown(f"### 🔮 Monte Carlo Simulation for `{selected_company}`")
+                st.markdown(f"This chart shows the simulated distribution of **{selected_company}**’s stock price based on historical volatility and mean return.")
+                
+                # --- Create Simulated Distribution Plot with Enhanced Styling ---
+                fig3 = ff.create_distplot([simulated_prices], group_labels=[f"{selected_company} Simulation"], show_hist=False, colors=['red'])
+                
+                fig3.update_layout(
+                    title=f"{selected_company} - Simulated Distribution",
+                    title_font=dict(size=22, color='red'),
+                    xaxis_title="Simulated Price (ZMW)",
+                    yaxis_title="Density",
+                    paper_bgcolor='black',
+                    plot_bgcolor='black',
+                    font=dict(color='red'),
+                    xaxis=dict(showgrid=True, tickfont=dict(color='red')),
+                    yaxis=dict(showgrid=True, tickfont=dict(color='red'))
+                )
+                
+                st.plotly_chart(fig3, use_container_width=True)
+
 
                 # --- Summary ---
                 expected_price = np.mean(simulated_prices)
