@@ -120,8 +120,28 @@ def app():
                 return
 
             selected_company = st.selectbox("📊 Select a company for analysis", options=list(temp.columns))
+            # --- Add dynamic description for portfolio analysis ---
             st.markdown(f"## 📊 Analysis for: `{selected_company}`")
-
+            
+            st.markdown("""
+            ### 📈 How Yengo Predicts Portfolio Value Changes
+            
+            At Yengo, we use **advanced forecasting models** and **simulation techniques** to predict the potential future performance of your stock portfolio. Here’s how our app works:
+            
+            - **ARIMA Model**: 
+                - We use the **ARIMA (AutoRegressive Integrated Moving Average)** model to analyze and forecast future stock prices based on historical data. ARIMA helps identify patterns and trends in time-series data, providing predictions on future stock movements.
+                - The ARIMA model is highly useful for predicting short- and medium-term price movements by considering the past performance and any seasonal variations in the stock.
+            
+            - **Monte Carlo Simulations**:
+                - To understand the uncertainty and potential variability of future stock prices, we run **Monte Carlo simulations**. This method uses random sampling to simulate a wide range of possible price outcomes, considering historical volatility and mean returns.
+                - By simulating thousands of possible future paths, we can better assess the range of potential portfolio values and provide a **probability distribution** of outcomes.
+            
+            - **Historical Stock Prices**: 
+                - The foundation of our predictions comes from analyzing the **historical stock prices** of companies. By examining past performance, including trends, price fluctuations, and volatility, we can create more accurate forecasts and simulations. 
+                - Our app provides an in-depth analysis of these historical patterns to estimate the potential future value of your portfolio.
+            
+            Using these dynamic processes, we provide an **informed forecast** of potential future price changes and portfolio values, allowing you to make better financial decisions with greater confidence.
+            """)
             try:
                 # --- Dynamic Chart Description ---
                 st.markdown(f"### 📊 Price History for `{selected_company}`")
@@ -184,10 +204,7 @@ def app():
                     xaxis=dict(showgrid=True, tickfont=dict(color='red')),
                     yaxis=dict(showgrid=True, tickfont=dict(color='red'))
                 )
-                
                 st.plotly_chart(fig2, use_container_width=True)
-
-
             except Exception as e:
                 logging.error(f"Error in forecast or plot: {e}")
                 st.error("There was a problem with forecasting.")
@@ -227,8 +244,6 @@ def app():
                 )
                 
                 st.plotly_chart(fig3, use_container_width=True)
-
-
                 # --- Summary ---
                 expected_price = np.mean(simulated_prices)
                 final_value = expected_price * initial_portfolio
