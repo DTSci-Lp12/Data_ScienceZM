@@ -33,16 +33,16 @@ def calculate_treasury_bill(investment, term, yield_rate):
     price = (1 / (1 + ((term / 365) * yield_rate))) * 100
     cost_value = investment * (price / 100)
     handling_fee = 0.01
-    cost_value_post_fee = cost_value * (1 - handling_fee)
+    cost_value_post_fee = cost_value
     interest = investment - cost_value_post_fee
     return price, cost_value_post_fee, interest
 
-def calculate_bond(investment, term, coupon_rate, interest_rate, purchase_date):
+def calculate_bond(investment, term, coupon_rate, yield_rate, purchase_date):
     bond_price = investment
     handling_fee = 0.01
-    bond_cost_post_fee = bond_price * (1 - handling_fee)
+    bond_cost_post_fee = bond_price
     bond_coupon = investment * (coupon_rate / 100) * (182 / 365)
-    bond_coupon_after_tax = bond_coupon * (1 - (0.15+0.01))
+    bond_coupon_after_tax = bond_coupon * (1 - (0.15+handling_fee))
     coupon_dates, payments = [], []
     for i in range(1, term * 2 + 1):
         coupon_date = purchase_date + timedelta(days=182 * i)
@@ -58,7 +58,7 @@ def export_to_excel(investment_data, coupon_dates, payments):
             "Investment Amount (K)": investment_data["Investment Amount (K)"],
             "Term (Years)": investment_data["Term (Years)"],
             "Coupon Rate (%)": investment_data["Coupon Rate (%)"],
-            "Interest Rate (%)": investment_data["Interest Rate (%)"],
+            "Yield Rate (%)": investment_data["Yield Rate (%)"],
             "Bond Price per Unit (K)": investment_data["Bond Price per Unit (K)"],
             "Total Cost (Post Fee) (K)": investment_data["Total Cost (Post Fee) (K)"],
             "Coupon (After Tax) (K)": investment_data["Coupon (After Tax) (K)"],
@@ -423,17 +423,17 @@ To begin, please enter your investor details in the fields provided on the sideb
         investment = st.number_input("Investment Amount (K)", min_value=5000, step=5000)
         term = st.number_input("Term (Years)", min_value=1)
         coupon_rate = st.number_input("Coupon Rate (%)", min_value=0.0)
-        interest_rate = st.number_input("Interest Rate (%)", min_value=0.0)
+        yield_rate = st.number_input("Yield Rate (%)", min_value=0.0)
         purchase_date = st.date_input("Purchase Date", min_value=datetime.today())
 
         if st.button("Calculate Bond"):
             if investment % 5000 != 0:
                 st.error("Investment must be in multiples of 5000.")
-            elif investment <= 0 or term <= 0 or coupon_rate <= 0 or interest_rate <= 0:
+            elif investment <= 0 or term <= 0 or coupon_rate <= 0 or yield_rate <= 0:
                 st.error("Please enter valid inputs for all fields.")
             else:
                 bond_price, bond_cost_post_fee, bond_coupon_after_tax, coupon_dates, payments = calculate_bond(
-                    investment, term, coupon_rate, interest_rate / 100, purchase_date
+                    investment, term, coupon_rate, yield_rate / 100, purchase_date
                 )
                 st.subheader("Bond Investment Results")
                 st.write(f"Bond Price per unit: K{round(bond_price, 2)}")
@@ -445,7 +445,7 @@ To begin, please enter your investor details in the fields provided on the sideb
                     "Investment Amount (K)": investment,
                     "Term (Years)": term,
                     "Coupon Rate (%)": coupon_rate,
-                    "Interest Rate (%)": interest_rate,
+                    "Yield Rate (%)": yield_rate,
                     "Bond Price per Unit (K)": round(bond_price, 2),
                     "Total Cost (Post Fee) (K)": round(bond_cost_post_fee, 2),
                     "Coupon (After Tax) (K)": round(bond_coupon_after_tax, 2),
