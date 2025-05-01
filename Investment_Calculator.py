@@ -42,7 +42,7 @@ def calculate_bond(investment, term, coupon_rate, interest_rate, purchase_date):
     handling_fee = 0.01
     bond_cost_post_fee = bond_price * (1 - handling_fee)
     bond_coupon = investment * (coupon_rate / 100) * (182 / 365)
-    bond_coupon_after_tax = bond_coupon * (1 - 0.15)
+    bond_coupon_after_tax = bond_coupon * (1 - (0.15+0.01))
     coupon_dates, payments = [], []
     for i in range(1, term * 2 + 1):
         coupon_date = purchase_date + timedelta(days=182 * i)
